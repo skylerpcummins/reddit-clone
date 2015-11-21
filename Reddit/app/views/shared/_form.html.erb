@@ -1,0 +1,16 @@
+<form class="" action="<%= current_action %>" method="post">
+  <%= auth_token %>
+  <% if create_user %>
+    <label for="">Email</label>
+    <input type="text" name="user[email]" value="<%= @user.email if @user %>">
+    <br>
+  <% end %>
+  <label for="">Username</label>
+  <input type="text" name="user[username]" value="<%= @user.username if @user %>">
+  <br>
+  <label for="">Password</label>
+  <input type="password" name="user[password]">
+  <br>
+
+  <input type="submit" value='<%= button_text %>'>
+</form>

@@ -1,0 +1,23 @@
+<h3> <%= @post.title %> </h3>
+
+<%= link_to "My Link", @post.url %>
+<br>
+
+<%= @post.content %>
+<br>
+
+Posted by: <%= @post.author.username %>
+<br>
+<h3>Tagged Subs:</h3>
+<ul>
+  <% @post.subs.each do |sub| %>
+    <li><%= link_to sub.title, sub_url(sub) %></li>
+  <% end %>
+</ul>
+
+<br>
+<br>
+<% if logged_in? && current_user.id == @post.author_id %>
+  <%= link_to "Edit Post", edit_post_url(@post) %>
+  <%= button_to "Delete Post", post_url(@post), method: :delete %>
+<% end %>
